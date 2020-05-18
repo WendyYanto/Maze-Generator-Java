@@ -1,7 +1,12 @@
-public class Tile {
-	
-	public Tile(int col, int row, int width) {
-		super();
+class Tile {
+
+	private int row;
+	private int col;
+	private boolean visited;
+	private String status;
+	private int width;
+
+	Tile(int col, int row, int width) {
 		this.row = row;
 		this.col = col;
 		this.width = width;
@@ -9,54 +14,32 @@ public class Tile {
 		this.status = "WALL";
 	}
 
-	public int getRow() {
+	int getRow() {
 		return row;
 	}
 
-	public void setRow(int row) {
-		this.row = row;
-	}
-
-	public int getCol() {
+	int getCol() {
 		return col;
 	}
 
-	public boolean visited() {
+	boolean isVisited() {
 		return this.visited;
 	}
-	
-	public void setCol(int col) {
-		this.col = col;
-	}
-	
-	public void setVisited() {
+
+	void setVisited() {
 		this.visited = true;
 	}
 
-	private int row;
-	private int col;
-	private boolean visited;
-	private String status;
-	private int width;
-	
-	public int getWidth() {
+	int getWidth() {
 		return width;
 	}
 
-	public void setWidth(int width) {
-		this.width = width;
-	}
-
-	public String getStatus() {
+	String getStatus() {
 		return status;
 	}
 
-	public void setStatus(String status) {
+	void setStatus(String status) {
 		this.status = status;
 	}
 
-	public Tile() {
-		// TODO Auto-generated constructor stub
-	}
-	
 }

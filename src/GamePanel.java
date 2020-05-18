@@ -1,15 +1,11 @@
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Stroke;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Stack;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 
 import javax.swing.JPanel;
 
@@ -166,21 +162,21 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 
 		if(getIndex(myRow-1,myCol) != -1 && getIndex(myRow-2,myCol) != -1) {
 			upNeighbor = tileMatrix.get(getIndex(myRow-2,myCol));
-			if(upNeighbor != null && !upNeighbor.visited()) {
+			if(upNeighbor != null && !upNeighbor.isVisited()) {
 				myNeighbors.add(upNeighbor);
 			}
 		}
 
 		if(getIndex(myRow+1,myCol) != -1 && getIndex(myRow+2,myCol) != -1) {
 			downNeighbor = tileMatrix.get(getIndex(myRow+2,myCol));
-			if(downNeighbor != null &&!downNeighbor.visited()) {
+			if(downNeighbor != null &&!downNeighbor.isVisited()) {
 				myNeighbors.add(downNeighbor);
 			}
 		}
 
 		if(getIndex(myRow,myCol-1) != -1 && getIndex(myRow,myCol-2) != -1) {
 			leftNeighbor = tileMatrix.get(getIndex(myRow,myCol-2));
-			if(leftNeighbor != null && !leftNeighbor.visited()) {
+			if(leftNeighbor != null && !leftNeighbor.isVisited()) {
 				myNeighbors.add(leftNeighbor);
 			}
 
@@ -188,7 +184,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 
 		if(getIndex(myRow,myCol+1) != -1 && getIndex(myRow,myCol+2) != -1) {
 			rightNeighbor = tileMatrix.get(getIndex(myRow,myCol+2));
-			if(rightNeighbor != null && !rightNeighbor.visited()) {
+			if(rightNeighbor != null && !rightNeighbor.isVisited()) {
 				myNeighbors.add(rightNeighbor);
 			}
 		}
