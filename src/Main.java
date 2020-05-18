@@ -1,3 +1,6 @@
+import contract.MainContract;
+import ui.GamePanel;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
@@ -11,14 +14,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-public class Main extends JFrame {
+public class Main extends JFrame implements MainContract {
 
 	private static final int GAME_WIDTH = 800;
 	private static final int GAME_HEIGHT = 500;
 
-	static JLabel timeLeft;
-	static JLabel totalLife;
-	static JLabel currLevel;
+	private JLabel timeLabel;
+	private JLabel lifeLabel;
+	private JLabel levelLabel;
 
 	private JPanel setupInfoPanel() {
 		JPanel infoPanel = new JPanel();
@@ -39,26 +42,26 @@ public class Main extends JFrame {
 
 	private JPanel setupTimeLeftPanel() {
 		JPanel timeLeftPanel = new JPanel();
-		timeLeft = new JLabel("Time Left : 25");
-		timeLeft.setFont(new Font("Serif", Font.PLAIN, 24));
-		timeLeft.setVerticalAlignment(SwingConstants.CENTER);
-		timeLeftPanel.add(timeLeft);
+		timeLabel = new JLabel("Time Left : 25");
+		timeLabel.setFont(new Font("Serif", Font.PLAIN, 24));
+		timeLabel.setVerticalAlignment(SwingConstants.CENTER);
+		timeLeftPanel.add(timeLabel);
 		return timeLeftPanel;
 	}
 
 	private JPanel setupTotalLifePanel() {
 		JPanel totalLifePanel = new JPanel();
-		totalLife = new JLabel("Life : 3");
-		totalLife.setFont(new Font("Serif", Font.PLAIN, 24));
-		totalLifePanel.add(totalLife);
+		lifeLabel = new JLabel("Life : 3");
+		lifeLabel.setFont(new Font("Serif", Font.PLAIN, 24));
+		totalLifePanel.add(lifeLabel);
 		return totalLifePanel;
 	}
 
 	private JPanel setupCurrentLevelPanel() {
 		JPanel currentLevelPanel = new JPanel();
-		currLevel = new JLabel("Level : 1");
-		currLevel.setFont(new Font("Serif", Font.PLAIN, 24));
-		currentLevelPanel.add(currLevel);
+		levelLabel = new JLabel("Level : 1");
+		levelLabel.setFont(new Font("Serif", Font.PLAIN, 24));
+		currentLevelPanel.add(levelLabel);
 		return currentLevelPanel;
 	}
 
@@ -146,7 +149,7 @@ public class Main extends JFrame {
 	private Main() {
 		setLayout(new BorderLayout());
 
-		GamePanel gamePanel = new GamePanel();
+		GamePanel gamePanel = new GamePanel(this);
 		JPanel infoPanel = setupInfoPanel();
 
 		infoPanel.add(setupTitlePanel());
@@ -172,4 +175,18 @@ public class Main extends JFrame {
 		new Main();
 	}
 
+	@Override
+	public void setTime(int time) {
+		timeLabel.setText("Time Left : " + time);
+	}
+
+	@Override
+	public void setTotalLife(int life) {
+		lifeLabel.setText("Life : " + life);
+	}
+
+	@Override
+	public void setLevel(int level) {
+		levelLabel.setText("Level : " + level);
+	}
 }

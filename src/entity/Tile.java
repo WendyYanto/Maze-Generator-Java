@@ -1,4 +1,6 @@
-class Tile {
+package entity;
+
+public class Tile {
 
 	private int row;
 	private int col;
@@ -6,7 +8,7 @@ class Tile {
 	private String status;
 	private int width;
 
-	Tile(int col, int row, int width) {
+	public Tile(int col, int row, int width) {
 		this.row = row;
 		this.col = col;
 		this.width = width;
@@ -14,31 +16,31 @@ class Tile {
 		this.status = "WALL";
 	}
 
-	int getRow() {
+	public int getRow() {
 		return row;
 	}
 
-	int getCol() {
+	public int getCol() {
 		return col;
 	}
 
-	boolean isVisited() {
+	public boolean isVisited() {
 		return this.visited;
 	}
 
-	void setVisited() {
+	public void setVisited() {
 		this.visited = true;
 	}
 
-	int getWidth() {
+	public int getWidth() {
 		return width;
 	}
 
-	String getStatus() {
+	public String getStatus() {
 		return status;
 	}
 
-	void setStatus(String status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 
