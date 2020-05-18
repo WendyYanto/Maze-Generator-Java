@@ -69,28 +69,28 @@ public class Main extends JFrame {
 		infoPanel.add(currLevelPanel);	
 		
 		JPanel blueBoxPanel = new JPanel();
-		ImageIcon blueBoxImage = new ImageIcon("src/blueBox.png");
+		ImageIcon blueBoxImage = new ImageIcon("src/BlueBox.png");
 		JLabel blueBoxLabel = new JLabel("Your Goal");
 		blueBoxLabel.setIcon(blueBoxImage);
 		blueBoxPanel.add(blueBoxLabel);
 		infoPanel.add(blueBoxPanel);
 		
 		JPanel greenBoxPanel = new JPanel();
-		ImageIcon greenBoxImage = new ImageIcon("src/greenBox.png");
+		ImageIcon greenBoxImage = new ImageIcon("src/GreenBox.png");
 		JLabel greenBoxLabel = new JLabel("Player");
 		greenBoxLabel.setIcon(greenBoxImage);
 		greenBoxPanel.add(greenBoxLabel);
 		infoPanel.add(greenBoxPanel);
 		
 		JPanel yellowBoxPanel = new JPanel();
-		ImageIcon yellowBoxImage = new ImageIcon("src/yellowBox.png");
+		ImageIcon yellowBoxImage = new ImageIcon("src/YellowBox.png");
 		JLabel yellowBoxLabel = new JLabel("Coin (Extra Time)");
 		yellowBoxLabel.setIcon(yellowBoxImage);
 		yellowBoxPanel.add(yellowBoxLabel);
 		infoPanel.add(yellowBoxPanel);		
 		
 		JPanel redBoxPanel = new JPanel();
-		ImageIcon redBoxImage = new ImageIcon("src/redBox.png");
+		ImageIcon redBoxImage = new ImageIcon("src/RedBox.png");
 		JLabel redBoxLabel = new JLabel("Trap");
 		redBoxLabel.setIcon(redBoxImage);
 		redBoxPanel.add(redBoxLabel);
