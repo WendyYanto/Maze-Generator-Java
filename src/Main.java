@@ -2,8 +2,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
@@ -18,97 +16,104 @@ public class Main extends JFrame {
 	private static final int GAME_WIDTH = 800;
 	private static final int GAME_HEIGHT = 500;
 
-	private JPanel infoPanel = new JPanel();
-	private JPanel titlePanel = new JPanel();
-	private JPanel timeLeftPanel = new JPanel();
-	private JPanel totalLifePanel = new JPanel();
-	private JPanel currentLevelPanel = new JPanel();
-	private JPanel blueBoxPanel = new JPanel();
-	private JPanel greenBoxPanel = new JPanel();
-	private JPanel yellowBoxPanel = new JPanel();
-	private JPanel redBoxPanel = new JPanel();
-	private JPanel pauseInfoPanel = new JPanel();
-	private JPanel exitPanel = new JPanel();
-
 	static JLabel timeLeft;
 	static JLabel totalLife;
 	static JLabel currLevel;
 
-	private void setupInfoPanel() {
+	private JPanel setupInfoPanel() {
+		JPanel infoPanel = new JPanel();
 		infoPanel.setSize(400,400);
 		GridLayout Legends = new GridLayout(12,1);
 		infoPanel.setLayout(Legends);
+		return infoPanel;
 	}
 
-	private void setupTitlePanel() {
+	private JPanel setupTitlePanel() {
+		JPanel titlePanel = new JPanel();
 		JLabel title = new JLabel("Find the X-it");
 		title.setFont(new Font("Serif", Font.PLAIN, 30));
 		title.setHorizontalAlignment(SwingConstants.LEFT);
 		titlePanel.add(title);
+		return titlePanel;
 	}
 
-	private void setupTimeLeftPanel() {
+	private JPanel setupTimeLeftPanel() {
+		JPanel timeLeftPanel = new JPanel();
 		timeLeft = new JLabel("Time Left : 25");
 		timeLeft.setFont(new Font("Serif", Font.PLAIN, 24));
 		timeLeft.setVerticalAlignment(SwingConstants.CENTER);
 		timeLeftPanel.add(timeLeft);
+		return timeLeftPanel;
 	}
 
-	private void setupTotalLifePanel() {
+	private JPanel setupTotalLifePanel() {
+		JPanel totalLifePanel = new JPanel();
 		totalLife = new JLabel("Life : 3");
 		totalLife.setFont(new Font("Serif", Font.PLAIN, 24));
 		totalLifePanel.add(totalLife);
+		return totalLifePanel;
 	}
 
-	private void setupCurrentLevelPanel() {
+	private JPanel setupCurrentLevelPanel() {
+		JPanel currentLevelPanel = new JPanel();
 		currLevel = new JLabel("Level : 1");
 		currLevel.setFont(new Font("Serif", Font.PLAIN, 24));
 		currentLevelPanel.add(currLevel);
+		return currentLevelPanel;
 	}
 
-	private void setupBlueBoxPanel() {
+	private JPanel setupBlueBoxPanel() {
+		JPanel blueBoxPanel = new JPanel();
 		ImageIcon blueBoxImage = new ImageIcon("src/assets/BlueBox.png");
 		JLabel blueBoxLabel = new JLabel("Your Goal");
 		blueBoxLabel.setIcon(blueBoxImage);
 		blueBoxPanel.add(blueBoxLabel);
+		return blueBoxPanel;
 	}
 
-	private void setupGreenBoxPanel() {
+	private JPanel setupGreenBoxPanel() {
+		JPanel greenBoxPanel = new JPanel();
 		ImageIcon greenBoxImage = new ImageIcon("src/assets/GreenBox.png");
 		JLabel greenBoxLabel = new JLabel("Player");
 		greenBoxLabel.setIcon(greenBoxImage);
 		greenBoxPanel.add(greenBoxLabel);
+		return greenBoxPanel;
 	}
 
-	private void setupYellowBoxPanel() {
+	private JPanel setupYellowBoxPanel() {
+		JPanel yellowBoxPanel = new JPanel();
 		ImageIcon yellowBoxImage = new ImageIcon("src/assets/YellowBox.png");
 		JLabel yellowBoxLabel = new JLabel("Coin (Extra Time)");
 		yellowBoxLabel.setIcon(yellowBoxImage);
 		yellowBoxPanel.add(yellowBoxLabel);
+		return yellowBoxPanel;
 	}
 
-	private void setupRedBoxPanel() {
+	private JPanel setupRedBoxPanel() {
+		JPanel redBoxPanel = new JPanel();
 		ImageIcon redBoxImage = new ImageIcon("src/assets/RedBox.png");
 		JLabel redBoxLabel = new JLabel("Trap");
 		redBoxLabel.setIcon(redBoxImage);
 		redBoxPanel.add(redBoxLabel);
+		return redBoxPanel;
 	}
 
-	private void setupPauseInfoPanel() {
+	private JPanel setupPauseInfoPanel() {
+		JPanel pauseInfoPanel = new JPanel();
 		JLabel spaceLabel = new JLabel("Press 'Space' to Pause the game");
 		spaceLabel.setFont(new Font("Serif", Font.PLAIN, 20));
 		spaceLabel.setForeground(Color.decode("#401ef9"));
 		pauseInfoPanel.add(spaceLabel);
+		return pauseInfoPanel;
 	}
 
-	private void setupExitPanel() {
+	private JPanel setupExitPanel() {
+		JPanel exitPanel = new JPanel();
 		JLabel CloseHoverActionLabel = new JLabel("Hover this to show exit button");
 		JButton CloseButton = new JButton("Close");
 		CloseButton.setRolloverEnabled(false);
 		CloseButton.setVisible(false);
-
 		CloseButton.addActionListener(e -> System.exit(0));
-
 		CloseButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -135,37 +140,27 @@ public class Main extends JFrame {
 
 		exitPanel.add(CloseHoverActionLabel);
 		exitPanel.add(CloseButton);
+		return exitPanel;
 	}
 
 	private Main() {
 		setLayout(new BorderLayout());
 
 		GamePanel gamePanel = new GamePanel();
+		JPanel infoPanel = setupInfoPanel();
+
+		infoPanel.add(setupTitlePanel());
+		infoPanel.add(setupTimeLeftPanel());
+		infoPanel.add(setupTotalLifePanel());
+		infoPanel.add(setupCurrentLevelPanel());
+		infoPanel.add(setupBlueBoxPanel());
+		infoPanel.add(setupGreenBoxPanel());
+		infoPanel.add(setupYellowBoxPanel());
+		infoPanel.add(setupRedBoxPanel());
+		infoPanel.add(setupPauseInfoPanel());
+		infoPanel.add(setupExitPanel());
+
 		add(gamePanel,BorderLayout.CENTER);
-
-		setupInfoPanel();
-		setupTitlePanel();
-		setupTimeLeftPanel();
-		setupTotalLifePanel();
-		setupCurrentLevelPanel();
-		setupBlueBoxPanel();
-		setupGreenBoxPanel();
-		setupYellowBoxPanel();
-		setupRedBoxPanel();
-		setupPauseInfoPanel();
-		setupExitPanel();
-
-		infoPanel.add(titlePanel);
-		infoPanel.add(timeLeftPanel);
-		infoPanel.add(totalLifePanel);
-		infoPanel.add(currentLevelPanel);
-		infoPanel.add(blueBoxPanel);
-		infoPanel.add(greenBoxPanel);
-		infoPanel.add(yellowBoxPanel);
-		infoPanel.add(redBoxPanel);
-		infoPanel.add(pauseInfoPanel);
-		infoPanel.add(exitPanel);
-
 		add(infoPanel, BorderLayout.EAST);
 		setSize(GAME_WIDTH, GAME_HEIGHT);
 		setLocationRelativeTo(null);
