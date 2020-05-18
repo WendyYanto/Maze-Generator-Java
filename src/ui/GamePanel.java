@@ -99,7 +99,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener, GameCont
         generateCoin();
     }
 
-    public void generateTrap() {
+    private void generateTrap() {
         int counter = 0;
         Tile temp;
 
@@ -115,7 +115,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener, GameCont
         } while (counter != 3);
     }
 
-    public void generateCoin() {
+    private void generateCoin() {
         int counter = 0;
         Tile temp;
 
@@ -144,17 +144,13 @@ public class GamePanel extends JPanel implements Runnable, KeyListener, GameCont
             cellStack.pop();
             Tile neighbor = getNeighbors(currTile.getRow(), currTile.getCol());
 
-            if (neighbor == null) {
-                continue;
-            } else {
-                while (neighbor != null) {
+            while (neighbor != null) {
+                neighbor.setStatus("PATH");
+                neighbor = getNeighbors(neighbor.getRow(), neighbor.getCol());
+                if (neighbor != null) {
+                    cellStack.push(neighbor);
                     neighbor.setStatus("PATH");
-                    neighbor = getNeighbors(neighbor.getRow(), neighbor.getCol());
-                    if (neighbor != null) {
-                        cellStack.push(neighbor);
-                        neighbor.setStatus("PATH");
-                        neighbor.setVisited();
-                    }
+                    neighbor.setVisited();
                 }
             }
         }
